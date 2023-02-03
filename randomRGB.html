@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>RGB</title>
+    
+    <style>
+   
+        body,.wrap,.butt,span{font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+    
+        .wrap{
+                text-align: center;
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%)
+            }
+    
+        .colour{
+            width: 200px;
+            height: 100px;
+            font-size: 100px;
+            border: hidden;
+            text-align: center;
+            background: transparent;
+            outline: none;
+        }
+    
+        span{font-size: 100px;}
+
+        .nav{
+        background-color:rgba(0, 0, 0);
+        font-size: 50px;
+        text-align: center;
+        word-spacing: 500px;   
+        }
+
+        a{color: white;}
+    </style>
+    
+    </head>
+    
+    <body id="back">
+        <div class="nav">
+            <a href="colourGenerator.html">HOME</a>
+            <a href="randomRGB.html">RGB</a>
+            <a href="randomHex.html">HEX</a>                
+        </div>
+        <div class="wrap">
+            <span>R&nbsp;</span><input type="number" id="valueR" value="255" class="colour"> 
+            <span>&nbsp;G&nbsp;</span><input type="number" id="valueG" value="255" class="colour"> 
+            <span>&nbsp;B&nbsp;</span><input type="number" id="valueB" value="255" class="colour">
+            <br><br>
+            <p id="together" style="font-size: 50px;">[SPACE]</p>
+        </div>
+
+<script>
+
+document.addEventListener("keypress",randomRGB);
+document.addEventListener("keypress",enterRGB);
+
+let r,g,b;
+
+function enterRGB(event){
+    
+    if (event.key=="Enter"){
+        r = document.getElementById("valueR").value;
+        g = document.getElementById("valueG").value;
+        b = document.getElementById("valueB").value;
+
+        document.getElementById("back").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        document.getElementById("together").innerHTML = r + "," + g + "," + b;
+    } 
+}
+
+function randomRGB(event){
+
+    r = Math.floor(Math.random()*255)
+    g = Math.floor(Math.random()*255)
+    b = Math.floor(Math.random()*255)
+
+     if(event.key==" "){
+        document.getElementById("back").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        document.getElementById("together").innerHTML = r + "," + g + "," + b;
+        document.getElementById("valueR").value = r;
+        document.getElementById("valueG").value = g;
+        document.getElementById("valueB").value = b;
+    } 
+}
+</script>
+
+</body>
+
+</html>

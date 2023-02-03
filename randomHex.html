@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Random Colour Generator</title>
+    
+<style>
+   
+    body,.wrap,.butt,#colour{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .wrap{
+        text-align: center;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+        }
+
+    #colour{
+        width: 400px;
+        height: 100px;
+        font-size: 100px;
+        border: hidden;
+        text-align: center;
+        background: transparent;
+        outline: none;
+    }
+    .butt{
+        border:hidden;
+        font-size: 20px;
+    }
+
+    .nav{
+        background-color:rgba(0, 0, 0);
+        font-size: 50px;
+        text-align: center;
+        word-spacing: 500px;   
+    }
+
+    a{
+        color: white;
+    }
+</style>
+
+</head>
+
+<body id="back">
+    <div class="nav">
+        <a href="colourGenerator.html">HOME</a>
+        <a href="randomRGB.html">RGB</a>
+        <a href="randomHex.html">HEX</a>
+    </div>
+    <div class="wrap">
+        <input type="text" id="colour" value="[SPACE]">
+        <br><br>
+    </div>
+    
+<script>
+
+document.addEventListener("keypress",randomColour);
+document.addEventListener("keypress",enterColour);
+
+function enterColour(){
+
+    if (event.key=="Enter"){
+        let entered = document.getElementById("colour").value
+        console.log(entered);
+        document.getElementById("colour").value = entered;
+        document.getElementById("back").style.backgroundColor = entered;
+    }
+}
+
+function randomColour(event){
+
+     if(event.key==" "){
+
+        let hex="";
+
+        for (let i =0; i < 6; i++){
+            let choice = Math.floor(Math.random()*2);
+
+            if ( choice == 1){
+            hex += String.fromCharCode(Math.floor(Math.random()*6)+65);
+            console.log(hex);
+            } else {
+            hex+= Math.floor(Math.random()*9);
+            console.log(hex)
+            }
+        }   
+
+        hex = "#" + hex;
+        document.getElementById("colour").value = hex;
+        document.getElementById("back").style.backgroundColor = hex;
+        } 
+    } 
+
+</script> 
+
+</body>
+
+</html>
